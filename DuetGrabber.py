@@ -22,15 +22,17 @@ class DuetGrabber:
         self.tn = telnetlib.Telnet(host=self.IP, port=23)
        # self.tn.interact()
         print("Telnet OK")
-        self.getCurrentStatus_Telnet()
-
+       # self.getCurrentStatus_Telnet()
+        self.getCurrentStatus_WebInterface()
 
     def getCurrentStatus_Telnet(self):
 
         self.tn.write("M408".encode())
         print("Written to telnet")
         print(self.tn.read_lazy())
+        self.tn.close()
         print("Telnet done")
+
 
     def getCurrentStatus_WebInterface(self):
 
